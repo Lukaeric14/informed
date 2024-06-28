@@ -1,9 +1,59 @@
+"use client"
+
 import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { useState, useEffect } from 'react'
+import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 
 const Nav = () => { 
+    const isUserLoggedIn = true;
+
+    const [providers , setProdivers ] = useState(null);
+
+    useEffect (() => {
+        const setProdivers = async () => {
+            const response = await getProviders();
+
+            setProdivers(response);
+        }
+
+        setProdivers();
+    }, [])
 
     return (
         <div class="w-[247px] h-full relative bg-green-50">
+            <div>
+                {isUserLoggedIn ? (
+                    <div className='flex gap-3'>
+                        <Link href="/create-promt"
+                        className='black_btn'>
+                            Create Post
+                        </Link>
+
+                        <button type='button' onClick={signOut} className='outline_btn'>
+                            Sign Out
+                        </button>
+                    </div>
+                ): (
+                    <>
+                    {providers &&
+                    Object.values(providers).map((provider) => (
+                        <button
+                        type='button'
+                        key={provider.name}
+                        onClick={() => signIn(provider.id)}
+                        className='black_btn'
+                        >
+                            Sign In
+                        </button>
+
+
+                    ))}
+                    </>
+                )
+                }
+            </div>
     <img class="w-[132px] h-[26.55px] left-[34px] top-[37px] absolute" src="https://via.placeholder.com/132x27" />
     <div class="left-[23px] top-[100px] absolute flex-col justify-start items-start gap-[15px] inline-flex">
         <div class="pl-[13px] pr-[30px] py-[3px] bg-green-700 rounded-[5px] justify-start items-center gap-2 inline-flex">
