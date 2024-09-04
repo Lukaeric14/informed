@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'; // Added import for useEffect and u
 export default function Home() {
   const [vendors, setVendors] = useState([]); // Added state to store vendors
   const [selectedFilters, setSelectedFilters] = useState({}); // Added state for selected filters
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
 
   const setNewView = async () => {
     const { data, error } = await supabase.from("vendors").select('*');
@@ -32,6 +33,15 @@ export default function Home() {
     return Object.keys(selectedFilters).length === 0 || selectedFilters.includes(normalizedCategory);
   });
 
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen); // Toggle the popup visibility
+    console.log("Contact vendor"); // Log "contact vendor" when the button is clicked for opening popup
+  };
+
+  if (isPopupOpen) {
+    console.log("Popup is open");
+  }
+
   return (
     <main className="h-screen w-full bg-[#F3F3F3] overflow-y-auto"> {/* Added overflow-y-auto to enable vertical scrolling */}
       <div className="flex flex-col h-full">
@@ -51,6 +61,7 @@ export default function Home() {
                     description={vendor.description} 
                     logo_url={vendor.logo_url} 
                     created_at={vendor.created_at} 
+                    openPopup={togglePopup} // Pass togglePopup as a prop
                   />
                 ))}
               </div>
