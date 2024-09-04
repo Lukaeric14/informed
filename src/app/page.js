@@ -43,11 +43,11 @@ export default function Home() {
   }
 
   return (
-    <main className="h-screen w-full bg-[#F3F3F3] overflow-y-auto"> {/* Added overflow-y-auto to enable vertical scrolling */}
+    <main className="h-screen w-full bg-[#F3F3F3] overflow-y-auto"> 
       <div className="flex flex-col h-full">
         <div className="flex-grow flex justify-center">
           <div className="flex w-full max-w-10xl mx-20 my-10" > 
-            <div className="w-1/4 h-screen rounded-lg p-4 shadow-md mx-15" style={{ backgroundColor: 'white', position: 'sticky', top: 40 }}> {/* Left Column with 30px margins */}
+            <div className="w-1/4 h-screen rounded-lg p-8 shadow-md mx-15" style={{ backgroundColor: 'white', position: 'sticky', top: 40 }}> {/* Left Column with increased padding */}
               <Filter setSelectedFilters={setSelectedFilters} /> {/* Pass function to update filters */}
             </div>
             <div className="w-1/2 mx-15" style={{ marginLeft: '30px', marginRight: '30px' }}> {/* Center Column with 30px margins */}

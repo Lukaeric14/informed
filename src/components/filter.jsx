@@ -25,6 +25,16 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
     }));
   };
 
+  const handleClearFilter = () => {
+    setSelectedCategories((prev) => {
+      const updatedCategories = {};
+      Object.keys(prev).forEach((key) => {
+        updatedCategories[key] = false;
+      });
+      return updatedCategories;
+    });
+  };
+
   useEffect(() => {
     // Update selected filters whenever selectedCategories changes
     setSelectedFilters(Object.keys(selectedCategories).filter(key => selectedCategories[key]));
@@ -34,7 +44,7 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
     <div className="flex flex-col space-y-4">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-medium text-gray-700">Filter</h2>
-        <button style={{ color: 'red', fontSize: 'smaller' }}>Clear filter</button>
+        <button style={{ color: 'red', fontSize: 'smaller' }} onClick={handleClearFilter}>Clear filter</button>
       </div>
       <div className="flex flex-col space-y-2 ml-4">
         <label htmlFor="category" className="text-sm font-medium text-gray-700">Category</label>
