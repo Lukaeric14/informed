@@ -55,7 +55,8 @@ export default function Home() {
                     primary_category={vendor.primary_category}
                     description={vendor.description} 
                     logo_url={vendor.logo_url} 
-                    created_at={vendor.created_at} 
+                    created_at={vendor.created_at}
+                    website_url={vendor.website_url} 
                   />
                 ))}
               </div>
