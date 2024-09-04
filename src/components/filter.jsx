@@ -47,13 +47,14 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
         <button style={{ color: 'red', fontSize: 'smaller' }} onClick={handleClearFilter}>Clear filter</button>
       </div>
       <div className="flex flex-col space-y-2 ml-4">
-        <label htmlFor="category" className="text-sm font-medium text-gray-700">Category</label>
+        <label htmlFor="category" className="text-base font-medium text-gray-700">Category</label>
         <div className="flex flex-col space-y-2">
           <label htmlFor="CRM" className="inline-flex items-center cursor-pointer">
             <input
               id="CRM"
               type="checkbox"
-              className="form-checkbox h-5 w-5 text-gray-600 transition duration-150 ease-in-out"
+              className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+              style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
               checked={selectedCategories.CRM}
               onChange={handleCheckboxChange}
             />
@@ -63,7 +64,8 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
             <input
               id="SalesEngagementPlatform"
               type="checkbox"
-              className="form-checkbox h-5 w-5 text-gray-600 transition duration-150 ease-in-out"
+              className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+              style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
               checked={selectedCategories.SalesEngagementPlatform}
               onChange={handleCheckboxChange}
             />
@@ -73,7 +75,8 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
             <input
               id="B2BDatabase"
               type="checkbox"
-              className="form-checkbox h-5 w-5 text-gray-600 transition duration-150 ease-in-out"
+              className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+              style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
               checked={selectedCategories.B2BDatabase}
               onChange={handleCheckboxChange}
             />
@@ -83,7 +86,8 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
             <input
               id="SalesIntelligence"
               type="checkbox"
-              className="form-checkbox h-5 w-5 text-gray-600 transition duration-150 ease-in-out"
+              className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+              style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
               checked={selectedCategories.SalesIntelligence}
               onChange={handleCheckboxChange}
             />
@@ -93,7 +97,8 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
             <input
               id="DocumentManagement"
               type="checkbox"
-              className="form-checkbox h-5 w-5 text-gray-600 transition duration-150 ease-in-out"
+              className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+              style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
               checked={selectedCategories.DocumentManagement}
               onChange={handleCheckboxChange}
             />
@@ -103,7 +108,8 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
             <input
               id="CommunicationTools"
               type="checkbox"
-              className="form-checkbox h-5 w-5 text-gray-600 transition duration-150 ease-in-out"
+              className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+              style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
               checked={selectedCategories.CommunicationTools}
               onChange={handleCheckboxChange}
             />
@@ -113,7 +119,8 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
             <input
               id="AccountBasedMarketing"
               type="checkbox"
-              className="form-checkbox h-5 w-5 text-gray-600 transition duration-150 ease-in-out"
+              className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+              style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
               checked={selectedCategories.AccountBasedMarketing}
               onChange={handleCheckboxChange}
             />
@@ -123,7 +130,8 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
             <input
               id="Dialer"
               type="checkbox"
-              className="form-checkbox h-5 w-5 text-gray-600 transition duration-150 ease-in-out"
+              className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+              style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
               checked={selectedCategories.Dialer}
               onChange={handleCheckboxChange}
             />
@@ -133,7 +141,8 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
             <input
               id="SalesAnalyticsAndReporting"
               type="checkbox"
-              className="form-checkbox h-5 w-5 text-gray-600 transition duration-150 ease-in-out"
+              className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+              style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
               checked={selectedCategories.SalesAnalyticsAndReporting}
               onChange={handleCheckboxChange}
             />
@@ -143,7 +152,8 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
             <input
               id="SalesAutomation"
               type="checkbox"
-              className="form-checkbox h-5 w-5 text-gray-600 transition duration-150 ease-in-out"
+              className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+              style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
               checked={selectedCategories.SalesAutomation}
               onChange={handleCheckboxChange}
             />
