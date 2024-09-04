@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'; // Added import for useEffect and u
 export default function Home() {
   const [vendors, setVendors] = useState([]); // Added state to store vendors
   const [selectedFilters, setSelectedFilters] = useState({}); // Added state for selected filters
-  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+  const [searchedVendor, setSearchedVendor] = useState(''); // Added state for searched vendor
 
   const setNewView = async () => {
     const { data, error } = await supabase.from("vendors").select('*');
@@ -26,21 +26,16 @@ export default function Home() {
     setNewView(); // Call the function on component mount
   }, []); // Empty dependency array to run once on mount
 
-  // Filter vendors based on selected filters
+  console.log(`This!!! is ${searchedVendor}`);
+
+  // Filter vendors based on selected filters and searched vendor
   const filteredVendors = vendors.filter(vendor => {
     // Normalize vendor category to match selected filters
     const normalizedCategory = vendor.primary_category.replace(/\s+/g, ''); // Remove spaces
-    return Object.keys(selectedFilters).length === 0 || selectedFilters.includes(normalizedCategory);
+    const matchesFilters = Object.keys(selectedFilters).length === 0 || selectedFilters.includes(normalizedCategory);
+    const matchesSearch = searchedVendor === '' || vendor.name.toLowerCase().includes(searchedVendor.toLowerCase());
+    return matchesFilters && matchesSearch;
   });
-
-  const togglePopup = () => {
-    setIsPopupOpen(!isPopupOpen); // Toggle the popup visibility
-    console.log("Contact vendor"); // Log "contact vendor" when the button is clicked for opening popup
-  };
-
-  if (isPopupOpen) {
-    console.log("Popup is open");
-  }
 
   return (
     <main className="h-screen w-full bg-[#F3F3F3] overflow-y-auto"> 
@@ -51,7 +46,7 @@ export default function Home() {
               <Filter setSelectedFilters={setSelectedFilters} /> {/* Pass function to update filters */}
             </div>
             <div className="w-1/2 mx-15" style={{ marginLeft: '30px', marginRight: '30px' }}> {/* Center Column with 30px margins */}
-              <HeroSection /> {/* HeroSection component inserted */}
+              <HeroSection setSearchedVendor={setSearchedVendor} /> {/* Pass setSearchedVendor to HeroSection */}
               <div className="container mx-auto grid grid-cols-1 gap-y-5" style={{ overflowY: 'hidden', marginTop: '20px' }}> {/* Added overflowY hidden to prevent vertical scrolling and top margin of 20px */}
                 {filteredVendors.map(vendor => ( // Map over filtered vendors
                   <VendorCard 
@@ -61,7 +56,6 @@ export default function Home() {
                     description={vendor.description} 
                     logo_url={vendor.logo_url} 
                     created_at={vendor.created_at} 
-                    openPopup={togglePopup} // Pass togglePopup as a prop
                   />
                 ))}
               </div>
