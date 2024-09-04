@@ -3,6 +3,8 @@
 import HeroSection from '@/components/heroSection';
 import Filter from '@/components/filter'; // Added import for Filter component
 import VendorCard from '@/components/vendorCard'; // Added import for VendorCard component
+import Profile from '@/components/profile'; // Added import for Profile component
+
 
 import { supabase } from "@/lib/supabase";
 import { useEffect, useState } from 'react'; // Added import for useEffect and useState
@@ -61,8 +63,8 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="w-1/4 h-screen rounded-lg p-4 shadow-md mx-15" style={{ backgroundColor: 'white', position: 'sticky', top: 40 }}> {/* Right Column with 30px margins */}
-              {/* Content goes here */}
+            <div className="w-1/4 h-[288px] rounded-lg p-4 shadow-md mx-15 flex justify-center items-center" style={{ backgroundColor: 'white', position: 'sticky', top: 40 }}> {/* Right Column with 30px margins */}
+              <Profile />
             </div>
           </div>
         </div>
