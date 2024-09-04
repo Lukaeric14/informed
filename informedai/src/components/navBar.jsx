@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 
 export default function NavBar() {
   return (
-    <header style={{width: '100%', height: '100%', paddingLeft: 35, paddingRight: 35, background: 'white', justifyContent: 'space-between', alignItems: 'center', display: 'inline-flex'}}>
+    <header style={{width: '100%', height: '100%', paddingLeft: 35, paddingRight: 35, paddingTop: 5, background: 'white', justifyContent: 'space-between', alignItems: 'center', display: 'inline-flex'}}>
         <div style={{justifyContent: 'flex-start', alignItems: 'center', gap: 20, display: 'flex'}}>
             <img style={{width: 167.13, position: 'relative'}} src="/logo-green.png" />
         </div>
