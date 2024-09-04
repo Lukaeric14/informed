@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require("tailwindcss/colors")
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,6 +15,7 @@ module.exports = {
       },
     },
       colors: {
+            ...colors,
             "border": "hsl(var(--border))",
             "input": "hsl(var(--input))",
             "ring": "hsl(var(--ring))",
