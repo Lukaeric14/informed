@@ -42,7 +42,7 @@ export default function Home() {
             </div>
             <div className="w-1/2 mx-15" style={{ marginLeft: '30px', marginRight: '30px' }}> {/* Center Column with 30px margins */}
               <HeroSection /> {/* HeroSection component inserted */}
-              <div className="container mx-auto grid grid-cols-1 gap-y-5" style={{ overflowY: 'hidden' }}> {/* Added overflowY hidden to prevent vertical scrolling */}
+              <div className="container mx-auto grid grid-cols-1 gap-y-5" style={{ overflowY: 'hidden', marginTop: '20px' }}> {/* Added overflowY hidden to prevent vertical scrolling and top margin of 20px */}
                 {filteredVendors.map(vendor => ( // Map over filtered vendors
                   <VendorCard 
                     key={vendor.id} 
