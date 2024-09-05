@@ -41,14 +41,15 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
   }, [selectedCategories, setSelectedFilters]);
 
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col space-y-4" style={{ fontFamily: 'Open Sans, sans-serif' }}>
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-medium text-gray-700">Filter</h2>
         <button style={{ color: 'red', fontSize: 'smaller' }} onClick={handleClearFilter}>Clear filter</button>
       </div>
-      <div className="flex flex-col space-y-2 ml-4">
-        <label htmlFor="category" className="text-base font-medium text-gray-700">Category</label>
-        <div className="flex flex-col space-y-2">
+      <div className="flex flex-col space-y-2">
+        <label htmlFor="category" className="text-base font-medium text-gray-700">Categories</label>
+        <label htmlFor="category" className="text-base text-gray-700" style={{ fontSize: '14px' }}>Sales Tech</label>
+        <div className="flex flex-col space-y-2 ml-4">
           <label htmlFor="CRM" className="inline-flex items-center cursor-pointer">
             <input
               id="CRM"
@@ -160,6 +161,7 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
             <span className="ml-3 block text-gray-700 text-sm">Sales Automation</span>
           </label>
         </div>
+        <label htmlFor="category" className="text-base font-medium text-gray-700" style={{ marginTop: '30px', fontSize: '14px' }}>Marketing Tech - Coming soon</label>
       </div>
     </div>
   );

@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -26,9 +31,9 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
   }
-  
+
   body {
-    font-family: 'Rethink Sans', sans-serif; /* Set the font to Rethink Sans */
+    font-family: 'Open Sans', sans-serif; /* Set the font to Open Sans */
     @apply bg-background text-foreground;
   }
 }
@@ -38,7 +43,3 @@
     @apply border-border;
   }
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
