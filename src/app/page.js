@@ -1,13 +1,13 @@
 'use client';
 
 import HeroSection from '@/components/heroSection';
-import Filter from '@/components/filter'; // Added import for Filter component
-import VendorCard from '@/components/vendorCard'; // Added import for VendorCard component
-import Profile from '@/components/profile'; // Added import for Profile component
-
+import Filter from '@/components/filter'; // Ensure Filter component is imported correctly
+import VendorCard from '@/components/vendorCard'; // Ensure VendorCard component is imported correctly
+import Profile from '@/components/profile'; // Ensure Profile component is imported correctly
+import Link from 'next/link'; // Ensure Link is imported correctly
 
 import { supabase } from "@/lib/supabase";
-import { useEffect, useState } from 'react'; // Added import for useEffect and useState
+import { useEffect, useState } from 'react'; // Ensure useEffect and useState are imported correctly
 
 export default function Home() {
   const [vendors, setVendors] = useState([]); // Added state to store vendors
@@ -51,15 +51,16 @@ export default function Home() {
               <HeroSection setSearchedVendor={setSearchedVendor} /> {/* Pass setSearchedVendor to HeroSection */}
               <div className="container mx-auto grid grid-cols-1 gap-y-5" style={{ overflowY: 'hidden', marginTop: '20px' }}> {/* Added overflowY hidden to prevent vertical scrolling and top margin of 20px */}
                 {filteredVendors.map(vendor => ( // Map over filtered vendors
-                  <VendorCard 
-                    key={vendor.id} 
-                    name={vendor.name} 
-                    primary_category={vendor.primary_category}
-                    description={vendor.description} 
-                    logo_url={vendor.logo_url} 
-                    created_at={vendor.created_at}
-                    website_url={vendor.website_url} 
-                  />
+                  <Link key={vendor.id} href={`/vendors/${vendor.id}`}> {/* Link to vendor page */}
+                    <VendorCard 
+                      name={vendor.name} 
+                      primary_category={vendor.primary_category}
+                      description={vendor.description} 
+                      logo_url={vendor.logo_url} 
+                      created_at={vendor.created_at}
+                      website_url={vendor.website_url} 
+                    />
+                  </Link>
                 ))}
               </div>
             </div>
