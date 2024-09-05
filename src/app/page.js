@@ -14,17 +14,14 @@ export default function Home() {
   const [selectedFilters, setSelectedFilters] = useState({}); // Added state for selected filters
   const [searchedVendor, setSearchedVendor] = useState(''); // Added state for searched vendor
 
-  const setNewView = async () => {
-    const { data, error } = await supabase.from("vendors").select('*');
-    if (data) {
-      console.log("Retrieved vendors data:", data);
-      console.log(data);
-      setVendors(data); // Set the fetched data to state
-    }
-    if (error) console.log(error.message); // Log the error message
-  };
-
   useEffect(() => {
+    const setNewView = async () => {
+      const { data, error } = await supabase.from("vendors").select('*');
+      if (data) {
+        setVendors(data); // Set the fetched data to state
+      }
+      if (error) console.log(error.message); // Log the error message
+    };
     setNewView(); // Call the function on component mount
   }, []); // Empty dependency array to run once on mount
 
@@ -38,6 +35,9 @@ export default function Home() {
     const matchesSearch = searchedVendor === '' || vendor.name.toLowerCase().includes(searchedVendor.toLowerCase());
     return matchesFilters && matchesSearch;
   });
+
+  // Ensure that the button is rendered consistently
+  const isButtonVisible = vendors.length > 0; // Example condition
 
   return (
     <main className="h-screen w-full bg-[#F3F3F3] overflow-y-auto"> 

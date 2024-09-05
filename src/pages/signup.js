@@ -37,6 +37,14 @@ const SignUp = () => {
       // Log the entire response from Supabase
       console.log('Supabase response:', response);
 
+      // Access user and session from the response data
+      const user = response.data?.user;
+      const session = response.data?.session;
+
+      // Log user and session
+      console.log('User:', user);
+      console.log('Session:', session);
+
       if (response.error) {
         setError(response.error.message);
         setSuccess(null);
@@ -44,13 +52,9 @@ const SignUp = () => {
         setSuccess('Sign up successful! Please check your email to confirm your account.');
         setError(null);
 
-        // Log the response to check if session is available
-        console.log('User:', response.user);
-        console.log('Session:', response.session);
-
         // Check if user is created and session is available
-        if (response.user && response.session) { // Ensure session is available
-          localStorage.setItem('token', response.session.access_token); // Use optional chaining
+        if (user && session) { // Ensure session is available
+          localStorage.setItem('token', session.access_token); // Use optional chaining
           router.push('/'); // Redirect to home page
         } else {
           setError('User created but no session available.');
@@ -70,13 +74,18 @@ const SignUp = () => {
                 <img style={{padding: 10, width: 220}} src="/logo-green.png" />
                 <div style={{textAlign: 'center', color: '#37352F', fontSize: 24, fontFamily: 'Open Sans', fontWeight: '700', Height: 28, wordWrap: 'break-word'}}>Welcome to Informed AI</div>
                 <div style={{width: '80%', height: 56, textAlign: 'center', color: '#37352F', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>Lorem ipsum dolor sit amet consectetur. Nec in leo sed justo facilisi facilisis eu faucibus lacus. In quis nulla mi eget scelerisque lacinia.</div>
-                <div style={{width: '80%', height: 37, borderRadius: 5, overflow: 'hidden', border: '1px #E9E9E7 solid', justifyContent: 'center', alignItems: 'center', gap: 14.40, display: 'inline-flex'}}>
-                    <div style={{color: '#37352F', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>Sign in with Google</div>
-                </div>
-                <div style={{width: 22, height: 20, textAlign: 'center', color: '#7F7F7F', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>or</div>
                 {step === 1 ? (
-                    <form onSubmit={handleEmailSubmit} style={{borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column', gap: 10, width: '80%'}}>
-                        <div style={{width: '99%', height: 37, borderRadius: 5, border: '1px #E9E9E7 solid', justifyContent: 'flex-start', alignItems: 'center', display: 'flex'}}>
+                    <>
+                        <div style={{width: '80%', height: 37, borderRadius: 5, overflow: 'hidden', border: '1px #E9E9E7 solid', justifyContent: 'center', alignItems: 'center', gap: 14.40, display: 'inline-flex'}}>
+                            <div style={{color: '#37352F', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>Sign in with Google</div>
+                        </div>
+                        <div style={{width: 22, height: 20, textAlign: 'center', color: '#7F7F7F', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>or</div>
+                    </>
+                ) : null}
+                {step === 1 ? (
+                    <form onSubmit={handleEmailSubmit} style={{borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'start', display: 'flex', flexDirection: 'column', gap: 10, width: '80%'}}>
+                        <label style={{width: '90%', color: '#37352F', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400'}}>Email</label>
+                        <div style={{width: '99%', height: 47, borderRadius: 5, border: '1px #E9E9E7 solid', justifyContent: 'flex-start', alignItems: 'center', display: 'flex'}}>
                             <input
                                 type="email"
                                 value={email}
@@ -93,8 +102,9 @@ const SignUp = () => {
                         </button>
                     </form>
                 ) : (
-                    <form onSubmit={handleFinalSignUp} style={{borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column', gap: 10, width: '80%'}}>
-                        <div style={{width: '99%', height: 37, borderRadius: 5, border: '1px #E9E9E7 solid', justifyContent: 'flex-start', alignItems: 'center', display: 'flex'}}>
+                    <form onSubmit={handleFinalSignUp} style={{borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'start', display: 'flex', flexDirection: 'column', gap: 15, width: '80%'}}>
+                        <label style={{width: '90%', color: '#37352F', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400'}}>Name</label>
+                        <div style={{width: '99%', height: 47, borderRadius: 5, border: '1px #E9E9E7 solid', justifyContent: 'flex-start', alignItems: 'center', display: 'flex'}}>
                             <input
                                 type="text"
                                 value={name}
@@ -104,7 +114,8 @@ const SignUp = () => {
                                 placeholder="Name"
                             />
                         </div>
-                        <div style={{width: '99%', height: 37, borderRadius: 5, border: '1px #E9E9E7 solid', justifyContent: 'flex-start', alignItems: 'center', display: 'flex'}}>
+                        <label style={{width: '90%', color: '#37352F', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400'}}>Password</label>
+                        <div style={{width: '99%', height: 47, borderRadius: 5, border: '1px #E9E9E7 solid', justifyContent: 'flex-start', alignItems: 'center', display: 'flex'}}>
                             <input
                                 type="password"
                                 value={password}
@@ -114,7 +125,8 @@ const SignUp = () => {
                                 placeholder="Password"
                             />
                         </div>
-                        <div style={{width: '99%', height: 37, borderRadius: 5, border: '1px #E9E9E7 solid', justifyContent: 'flex-start', alignItems: 'center', display: 'flex'}}>
+                        <label style={{width: '90%', color: '#37352F', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400'}}>Company Name</label>
+                        <div style={{width: '99%', height: 47, borderRadius: 5, border: '1px #E9E9E7 solid', justifyContent: 'flex-start', alignItems: 'center', display: 'flex'}}>
                             <input
                                 type="text"
                                 value={company}
@@ -131,7 +143,10 @@ const SignUp = () => {
                         </button>
                     </form>
                 )}
-                <div style={{height: 18, textAlign: 'center'}}><span style={{color: '#37352F', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '600', wordWrap: 'break-word'}}>Already have an account? </span><span style={{color: '#017F40', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '600', wordWrap: 'break-word'}}>Sign in</span></div>
+                <div style={{height: 18, textAlign: 'center'}}>
+                    <span style={{color: '#37352F', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '600', wordWrap: 'break-word'}}>Already have an account? </span>
+                    <button onClick={() => window.location.href = '/signin'} style={{background: 'none', border: 'none', color: '#017F40', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '600', cursor: 'pointer', padding: 0, margin: 0, textDecoration: 'underline'}}>Sign in</button>
+                </div>
                 <div style={{flex: '1 1 0', padding: 10}} />
                 <div style={{width: 406, height: 18, textAlign: 'center', color: '#7D7C78', fontSize: 11, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>By signing up, you agree to our Terms of Services & Privacy Policy</div>
             </div>

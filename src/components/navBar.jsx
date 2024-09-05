@@ -20,14 +20,26 @@ export default function NavBar() {
             <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word'}}>Community</div>
             <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word'}}>About Us</div>
         </div>
-        <div style={{justifyContent: 'flex-start', alignItems: 'flex-end', gap: 8, display: 'flex'}}>
-            <button onClick={() => window.location.href = '/signup'} style={{paddingLeft: 20, paddingRight: 20, paddingTop: 9, paddingBottom: 9, background: 'rgba(1, 127, 64, 0.10)', borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', gap: 20, display: 'flex'}}>
-                <div style={{color: '#017F40', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '500', height: 17, wordWrap: 'break-word', lineHeight: '17px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Create an account</div>
+        {typeof window !== 'undefined' && localStorage.getItem('token') ? (
+            <button onClick={() => {
+                localStorage.removeItem('token');
+                window.location.reload();
+            }} style={{ height: '100%', paddingLeft: 13, paddingRight: 13, paddingTop: 3, paddingBottom: 3, borderRadius: 5, overflow: 'hidden', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex', background: 'none', border: 'none', cursor: 'pointer'}}>
+                <div style={{width: 24, height: 24, position: 'relative'}}>
+                    <img style={{width: 19.45, height: 20, left: 2.27, top: 2, position: 'absolute'}} src="/material-symbols_logout.svg" alt="Logout Icon" />
+                </div>
+                <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>Logout</div>
             </button>
-            <button onClick={() => window.location.href = '/signin'} style={{paddingTop: 9, paddingBottom: 10, paddingLeft: 19, paddingRight: 20, background: '#017F40', borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
-                <div style={{color: 'white', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word', lineHeight: '17px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Sign in</div>
-            </button>
-        </div>
+        ) : (
+            <div style={{justifyContent: 'flex-start', alignItems: 'flex-end', gap: 8, display: 'flex'}}>
+                <button onClick={() => window.location.href = '/signup'} style={{paddingLeft: 20, paddingRight: 20, paddingTop: 9, paddingBottom: 9, background: 'rgba(1, 127, 64, 0.10)', borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', gap: 20, display: 'flex'}}>
+                    <div style={{color: '#017F40', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '500', height: 17, wordWrap: 'break-word', lineHeight: '17px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Create an account</div>
+                </button>
+                <button onClick={() => window.location.href = '/signin'} style={{paddingTop: 9, paddingBottom: 10, paddingLeft: 19, paddingRight: 20, background: '#017F40', borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
+                    <div style={{color: 'white', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word', lineHeight: '17px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Sign in</div>
+                </button>
+            </div>
+        )}
     </header>
   );
 }
