@@ -25,8 +25,6 @@ export default function Home() {
     setNewView(); // Call the function on component mount
   }, []); // Empty dependency array to run once on mount
 
-  console.log(`This!!! is ${searchedVendor}`);
-
   // Filter vendors based on selected filters and searched vendor
   const filteredVendors = vendors.filter(vendor => {
     // Normalize vendor category to match selected filters
@@ -51,16 +49,20 @@ export default function Home() {
               <HeroSection setSearchedVendor={setSearchedVendor} /> {/* Pass setSearchedVendor to HeroSection */}
               <div className="container mx-auto grid grid-cols-1 gap-y-5" style={{ overflowY: 'hidden', marginTop: '20px' }}> {/* Added overflowY hidden to prevent vertical scrolling and top margin of 20px */}
                 {filteredVendors.map(vendor => ( // Map over filtered vendors
-                  <Link key={vendor.id} href={`/vendors/${vendor.id}`}> {/* Link to vendor page */}
                     <VendorCard 
                       name={vendor.name} 
                       primary_category={vendor.primary_category}
+                      secondary_categories={vendor.secondary_categories}
                       description={vendor.description} 
                       logo_url={vendor.logo_url} 
                       created_at={vendor.created_at}
                       website_url={vendor.website_url} 
+                      founded={vendor.founded}
+                      country={vendor.country}
+                      best_for_persona={vendor.best_for_persona}
+                      best_for_industries={vendor.best_for_industries}
+                      best_for_company_size={vendor.best_for_company_size}
                     />
-                  </Link>
                 ))}
               </div>
             </div>

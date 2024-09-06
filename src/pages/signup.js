@@ -55,7 +55,25 @@ const SignUp = () => {
         // Check if user is created and session is available
         if (user && session) { // Ensure session is available
           localStorage.setItem('token', session.access_token); // Use optional chaining
-          router.push('/'); // Redirect to home page
+
+          // Write to users table in Supabase
+          const { error: insertError } = await supabase.from('users').insert([
+            {
+              id: user.id,
+              full_name: name,
+              email: email,
+              company: company,
+              auth_id: user.id
+            }
+          ]);
+
+          if (insertError) {
+            console.error('Error inserting user into users table:', insertError);
+            setError('An error occurred while saving user data. Please try again.');
+            setSuccess(null);
+          } else {
+            router.push('/'); // Redirect to home page
+          }
         } else {
           setError('User created but no session available.');
         }
