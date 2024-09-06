@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
-import Popup from './companyCardPopUp'; // Import the Popup component
+import CompanyPopup from './companyCardPopUp'; // Import the CompanyPopup component
+import ContactPopup from './contactAnonymously'; // Import the ContactPopup component
 
-const VendorCard = ({ name, primary_category, description, logo_url, created_at, website_url, secondary_categories, founded, country, best_for_persona, best_for_industries, best_for_company_size }) => { 
-    const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+const VendorCard = ({ name, primary_category, description, logo_url, created_at, website_url, secondary_categories, founded, country, best_for_personas, best_for_industries, best_for_company_size }) => { 
+    const [isCompanyPopupOpen, setIsCompanyPopupOpen] = useState(false); // State to manage company popup visibility
+    const [isContactPopupOpen, setIsContactPopupOpen] = useState(false); // State to manage contact popup visibility
 
-    const handleOpenPopup = () => {
-        setIsPopupOpen(true); // Open the popup
-        console.log('Popup opened successfully'); // Log success message
+    const handleOpenCompanyPopup = () => {
+        setIsCompanyPopupOpen(true); // Open the company popup
+        console.log('Company popup opened successfully'); // Log success message
     };
 
-    const handleClosePopup = () => {
-        setIsPopupOpen(false); // Close the popup
-        console.log('Popup closed successfully'); // Log success message
+    const handleCloseCompanyPopup = () => {
+        setIsCompanyPopupOpen(false); // Close the company popup
+        console.log('Company popup closed successfully'); // Log success message
+    };
+
+    const handleOpenContactPopup = () => {
+        setIsContactPopupOpen(true); // Open the contact popup
+        console.log('Contact popup opened successfully'); // Log success message
+    };
+
+    const handleCloseContactPopup = () => {
+        setIsContactPopupOpen(false); // Close the contact popup
+        console.log('Contact popup closed successfully'); // Log success message
     };
 
     const separatedSecondaryCategories = secondary_categories.split(',').map(category => category.trim());
@@ -29,7 +41,7 @@ const VendorCard = ({ name, primary_category, description, logo_url, created_at,
                         <button onClick={() => window.open(`${website_url}`, '_blank')} style={{ backgroundColor: 'white', border: 'none', cursor: 'pointer', marginLeft: '5px' }}>
                             <img src="/mdi_web.svg" alt="Globe Icon" style={{ width: '20px', height: '20px' }} />
                         </button>
-                        <button onClick={handleOpenPopup} style={{ backgroundColor: 'white', border: 'none', cursor: 'pointer', marginLeft: '5px' }}>
+                        <button onClick={handleOpenCompanyPopup} style={{ backgroundColor: 'white', border: 'none', cursor: 'pointer', marginLeft: '5px' }}>
                             <img src="/majesticons_open.svg" alt="open Icon" style={{ width: '20px', height: '20px' }} />
                         </button>
                     </div>
@@ -38,8 +50,8 @@ const VendorCard = ({ name, primary_category, description, logo_url, created_at,
                     </div>
                 </div>
                 <div className="flex flex-col">
-                    <button style={{ backgroundColor: '#017F40', color: 'white', padding: '7px 30px', borderRadius: '5px', marginBottom: '4px', fontSize: '12px' }}>Contact Anonymously</button>
-                    <button onClick={handleOpenPopup} style={{ backgroundColor: 'white', color: '#017F40', border: '1px solid #017F40', padding: '7px 30px', borderRadius: '5px', fontSize: '12px' }}>Open Company Page</button>
+                    <button onClick={handleOpenContactPopup} style={{ backgroundColor: '#017F40', color: 'white', padding: '7px 30px', borderRadius: '5px', marginBottom: '4px', fontSize: '12px' }}>Contact Anonymously</button>
+                    <button onClick={handleOpenCompanyPopup} style={{ backgroundColor: 'white', color: '#017F40', border: '1px solid #017F40', padding: '7px 30px', borderRadius: '5px', fontSize: '12px' }}>Open Company Page</button>
                 </div>
             </div>
         </div>
@@ -59,12 +71,18 @@ const VendorCard = ({ name, primary_category, description, logo_url, created_at,
             </div>
             <div style={{ color: '#9CA3AF', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '400', lineHeight: '16.80px', whiteSpace: 'nowrap' }}>Last updated {new Date(created_at).toDateString()}</div>
         </div>
-        <Popup 
-            isOpen={isPopupOpen} 
-            onClose={handleClosePopup} 
+        <CompanyPopup 
+            isOpen={isCompanyPopupOpen} 
+            onClose={handleCloseCompanyPopup} 
             websiteUrl={website_url} 
-            vendorData={{ name, primary_category, description, logo_url, created_at, secondary_categories, founded, country, best_for_persona, best_for_industries, best_for_company_size }} // Pass vendor data
-        /> {/* Render Popup */}
+            vendorData={{ name, primary_category, description, logo_url, created_at, secondary_categories, founded, country, best_for_personas, best_for_industries, best_for_company_size }} // Pass vendor data
+        /> {/* Render CompanyPopup */}
+        <ContactPopup 
+            isOpen={isContactPopupOpen} 
+            onClose={handleCloseContactPopup} 
+            websiteUrl={website_url} 
+            vendorData={{ name, primary_category, description, logo_url, created_at, secondary_categories, founded, country, best_for_personas, best_for_industries, best_for_company_size }} // Pass vendor data
+        /> {/* Render ContactPopup */}
     </div>
   );
 }

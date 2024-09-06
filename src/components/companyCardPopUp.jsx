@@ -22,7 +22,7 @@ const Popup = ({ isOpen, onClose, websiteUrl, vendorData }) => { // Added vendor
     };
 
     return (
-        <div className="fixed inset-0 z-50" style={{width: '100%', height: '100%', padding: 40, background: 'rgba(0, 0, 0, 0.05)', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-end', gap: 10, display: 'inline-flex'}} onClick={handleBackgroundClick}>
+        <div className="fixed inset-0 z-50" style={{width: '100%', height: '100%', padding: 40, background: 'rgba(0, 0, 0, 0.15)', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-end', gap: 10, display: 'inline-flex'}} onClick={handleBackgroundClick}>
             <div style={{width: 470, flex: '1 1 0', paddingTop: 12, paddingBottom: 30, paddingLeft: 30, paddingRight: 30, background: 'white', borderRadius: 22.53, overflow: 'hidden', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 20, display: 'flex'}}>
                 <div style={{alignSelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', display: 'inline-flex'}}>
                     <img style={{width: 18.33, height: 18.33}} src="/icon8-website-100.png" alt="Placeholder Image" />
@@ -64,33 +64,25 @@ const Popup = ({ isOpen, onClose, websiteUrl, vendorData }) => { // Added vendor
                     <div style={{flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 10, display: 'flex'}}>
                         <div style={{flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 10, display: 'flex'}}>
                             <div style={{justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex'}}>
-                                <div style={{height: 35, color: '#6A6A6A', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '500', lineHeight: '35px', wordWrap: 'break-word'}}>Company Size:</div>
-                                <div style={{color: '#6A6A6A', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '500', lineHeight: '35px', wordWrap: 'break-word'}}>{vendorData.best_for_company_size}</div>
+                                <div style={{minWidth:'75px', color: '#6A6A6A', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '500', wordWrap: 'break-word'}}>Company Size:</div>
+                                <div style={{color: '#6A6A6A', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '500', wordWrap: 'break-word'}}>{vendorData.best_for_company_size}</div>
                             </div>
                             <div style={{justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex'}}>
-                                <div style={{height: 35, color: '#6A6A6A', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '500', lineHeight: '35px', wordWrap: 'break-word'}}>Industries:</div>
-                                <div style={{color: '#6A6A6A', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '500', lineHeight: '35px', wordWrap: 'break-word'}}>{vendorData.best_for_industries}</div>
+                                <div style={{minWidth:'75px', color: '#6A6A6A', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '500', wordWrap: 'break-word'}}>Industries:</div>
+                                <div style={{color: '#6A6A6A', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '500', wordWrap: 'break-word'}}>{vendorData.best_for_industries}</div>
                             </div>
                             <div style={{justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex'}}>
-                                <div style={{height: 35, color: '#6A6A6A', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '500', lineHeight: '35px', wordWrap: 'break-word'}}>Personas:</div>
-                                <div style={{color: '#6A6A6A', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '500', lineHeight: '35px', wordWrap: 'break-word'}}>{vendorData.best_for_personas}</div>
+                                <div style={{minWidth:'75px', color: '#6A6A6A', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '500', wordWrap: 'break-word'}}>Personas:</div>
+                                <div style={{color: '#6A6A6A', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '500', wordWrap: 'break-word'}}>{vendorData.best_for_personas}</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div style={{alignSelf: 'stretch', flex: '1 1 0', paddingLeft: 25, paddingRight: 25, background: 'linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(1, 127, 64, 0) 0%, rgba(1, 127, 64, 0) 100%)', borderRadius: 6, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex'}}>
-                    <div style={{color: 'white', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '500', lineHeight: '14.40px', wordWrap: 'break-word'}}>Contact Anonymously</div>
-                </div>
-                <div style={{flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 10, display: 'flex'}}>
-                    <div style={{width: '100%', height: 38, paddingLeft: 25, paddingRight: 25, background: 'white', borderRadius: 6, overflow: 'hidden', border: '1px #017F40 solid', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex'}}>
-                        <div style={{color: '#017F40', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '500', lineHeight: '14.40px', wordWrap: 'break-word'}}>Signin to see fit score</div>
-                    </div>
-                    <div style={{width:'100%', height: 38, paddingLeft: 25, paddingRight: 25, background: 'linear-gradient(0deg, white 0%, white 100%), linear-gradient(0deg, #017F40 0%, #017F40 100%)', borderRadius: 6, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex'}}>
+                    <div style={{width:'100%', paddingLeft: 25, paddingRight: 25, paddingTop: 15, paddingBottom: 15, background: 'green', borderRadius: 6, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'inline-flex'}}>
                         <div style={{color: 'white', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '500', lineHeight: '14.40px', wordWrap: 'break-word'}}>Contact Anonymously</div>
                     </div>
                 </div>
             </div>
-        </div>
     );
 };
 

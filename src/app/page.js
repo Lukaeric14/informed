@@ -59,7 +59,7 @@ export default function Home() {
                       website_url={vendor.website_url} 
                       founded={vendor.founded}
                       country={vendor.country}
-                      best_for_persona={vendor.best_for_persona}
+                      best_for_personas={vendor.best_for_personas}
                       best_for_industries={vendor.best_for_industries}
                       best_for_company_size={vendor.best_for_company_size}
                     />

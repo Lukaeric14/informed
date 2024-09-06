@@ -91,13 +91,13 @@ const SignUp = () => {
                 <div style={{flex: '1 1 0', padding: 10}} />
                 <img style={{padding: 10, width: 220}} src="/logo-green.png" />
                 <div style={{textAlign: 'center', color: '#37352F', fontSize: 24, fontFamily: 'Open Sans', fontWeight: '700', Height: 28, wordWrap: 'break-word'}}>Welcome to Informed AI</div>
-                <div style={{width: '80%', height: 56, textAlign: 'center', color: '#37352F', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>Lorem ipsum dolor sit amet consectetur. Nec in leo sed justo facilisi facilisis eu faucibus lacus. In quis nulla mi eget scelerisque lacinia.</div>
+                <div style={{width: '80%', height: 56, textAlign: 'center', color: '#37352F', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>Get the answers you need to make informed decisions. Without speaking to salespeople.</div>
                 {step === 1 ? (
                     <>
-                        <div style={{width: '80%', height: 37, borderRadius: 5, overflow: 'hidden', border: '1px #E9E9E7 solid', justifyContent: 'center', alignItems: 'center', gap: 14.40, display: 'inline-flex'}}>
+                        {/* <div style={{width: '80%', height: 37, borderRadius: 5, overflow: 'hidden', border: '1px #E9E9E7 solid', justifyContent: 'center', alignItems: 'center', gap: 14.40, display: 'inline-flex'}}>
                             <div style={{color: '#37352F', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>Sign in with Google</div>
                         </div>
-                        <div style={{width: 22, height: 20, textAlign: 'center', color: '#7F7F7F', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>or</div>
+                        <div style={{width: 22, height: 20, textAlign: 'center', color: '#7F7F7F', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>or</div> */}
                     </>
                 ) : null}
                 {step === 1 ? (
