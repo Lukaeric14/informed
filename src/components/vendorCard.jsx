@@ -9,6 +9,7 @@ const VendorCard = ({ name, primary_category, description, logo_url, created_at,
     const handleOpenCompanyPopup = () => {
         setIsCompanyPopupOpen(true); // Open the company popup
         console.log('Company popup opened successfully'); // Log success message
+        mixpanel.track("companyPage Opened");
     };
 
     const handleCloseCompanyPopup = () => {
@@ -19,7 +20,27 @@ const VendorCard = ({ name, primary_category, description, logo_url, created_at,
     const handleOpenContactPopup = () => {
         setIsContactPopupOpen(true); // Open the contact popup
         console.log('Contact popup opened successfully'); // Log success message
-    };
+        console.log('User Name:', userName); // Log userName
+        console.log('Vendor Name:', name); // Log vendorName
+        mixpanel.track("contactPage Opened");
+            const insertInquiry = async (userName, vendorName) => {
+                try {
+                    const { data, error } = await supabase
+                        .from('inquiries')
+                        .insert([{ user_name: userName, vendor_name: vendorName }]);
+                    if (error) {
+                        console.error('Error inserting inquiry:', error);
+                    } else {
+                        console.log('Inquiry inserted successfully:', data);
+                    }
+                } catch (error) {
+                    console.error('Error inserting inquiry:', error);
+                }
+            };
+
+            // Assuming you have access to userName and vendorName
+            insertInquiry(userName, name);
+            };
 
     const handleCloseContactPopup = () => {
         setIsContactPopupOpen(false); // Close the contact popup
