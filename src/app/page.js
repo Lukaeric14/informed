@@ -6,13 +6,61 @@ import VendorCard from '@/components/vendorCard'; // Ensure VendorCard component
 import Profile from '@/components/profile'; // Ensure Profile component is imported correctly
 import Link from 'next/link'; // Ensure Link is imported correctly
 
+//Import Mixpanel SDK
+import mixpanel from "mixpanel-browser";
+ 
+// Near entry of your product, init Mixpanel
+mixpanel.init("28a50f0a8bc083d352ef5c1146c3414f", {
+  debug: true,
+  track_pageview: true,
+  persistence: "localStorage",
+});
+
 import { supabase } from "@/lib/supabase";
 import { useEffect, useState } from 'react'; // Ensure useEffect and useState are imported correctly
 
 export default function Home() {
+  const [userName, setUserName] = useState(''); // State for user name
+  const [userEmail, setUserEmail] = useState(''); // State for user email
   const [vendors, setVendors] = useState([]); // Added state to store vendors
   const [selectedFilters, setSelectedFilters] = useState({}); // Added state for selected filters
   const [searchedVendor, setSearchedVendor] = useState(''); // Added state for searched vendor
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      if (authError) {
+        console.error('Error fetching user:', authError);
+        return; // Exit if there's an authentication error
+      }
+      if (!user) {
+        console.error('No user found');
+        return; // Exit if no user is authenticated
+      }
+      
+      const { data, error: userError } = await supabase
+        .from('users')
+        .select('full_name, email')
+        .eq('id', user.id)
+        .single();
+      if (userError) {
+        console.error('Error fetching user details:', userError);
+      } else {
+        setUserName(data.full_name);
+        setUserEmail(data.email);
+        mixpanel.identify(data.email);
+        // console.log(`Mixpanel identify called with userEmail: ${data.email}`);
+
+        mixpanel.people.set({
+          '$name': data.full_name,
+          '$email': data.email,
+        });
+        // console.log(`Mixpanel people.set called with userName: ${data.full_name} and userEmail: ${data.email}`);
+      }
+    };
+
+    fetchUserData();
+  }, []); // Empty dependency array to run once on mount
 
   useEffect(() => {
     const setNewView = async () => {
@@ -50,6 +98,7 @@ export default function Home() {
               <div className="container mx-auto grid grid-cols-1 gap-y-5" style={{ overflowY: 'hidden', marginTop: '20px' }}> {/* Added overflowY hidden to prevent vertical scrolling and top margin of 20px */}
                 {filteredVendors.map(vendor => ( // Map over filtered vendors
                     <VendorCard 
+                      key={vendor.id} // Ensure to add a unique key for each vendor
                       name={vendor.name} 
                       primary_category={vendor.primary_category}
                       secondary_categories={vendor.secondary_categories}

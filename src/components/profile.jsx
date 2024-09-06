@@ -6,20 +6,25 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const { data: { user }, error } = await supabase.auth.getUser();
-      if (error) {
-        console.error('Error fetching user:', error);
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      if (authError) {
+        console.error('Error fetching user:', authError);
+        return; // Exit if there's an authentication error
+      }
+      if (!user) {
+        console.error('No user found');
+        return; // Exit if no user is authenticated
+      }
+      
+      const { data, error: userError } = await supabase
+        .from('users')
+        .select('full_name, company')
+        .eq('id', user.id)
+        .single();
+      if (userError) {
+        console.error('Error fetching user details:', userError);
       } else {
-        const { data, error: userError } = await supabase
-          .from('users')
-          .select('full_name, company')
-          .eq('id', user.id)
-          .single();
-        if (userError) {
-          console.error('Error fetching user details:', userError);
-        } else {
-          setUser({ ...user, ...data });
-        }
+        setUser({ ...user, ...data });
       }
     };
 

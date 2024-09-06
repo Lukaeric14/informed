@@ -67,8 +67,8 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
         <label htmlFor="category" className="text-base font-medium text-gray-700">Categories</label>
         <label htmlFor="category" className="text-base text-gray-700" style={{ fontSize: '14px' }}>Sales Tech</label>
         <div className="flex flex-col space-y-2 ml-4">
-          <details>
-            <summary className="text-base font-medium text-gray-700 cursor-pointer">Core Tools</summary>
+          <details open>
+            <summary className="text-base font-medium text-gray-700 cursor-pointer pb-4">Essentials</summary>
             <div className="flex flex-col space-y-2 ml-4">
               <label htmlFor="CRM" className="inline-flex items-center cursor-pointer">
                 <input
@@ -81,16 +81,16 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
                 />
                 <span className="ml-3 block text-gray-700 text-sm">CRM</span>
               </label>
-              <label htmlFor="SalesAutomation" className="inline-flex items-center cursor-pointer">
+              <label htmlFor="Dialer" className="inline-flex items-center cursor-pointer">
                 <input
-                  id="SalesAutomation"
+                  id="Dialer"
                   type="checkbox"
                   className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
                   style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
-                  checked={selectedCategories.SalesAutomation}
+                  checked={selectedCategories.Dialer}
                   onChange={handleCheckboxChange}
                 />
-                <span className="ml-3 block text-gray-700 text-sm">Sales Automation</span>
+                <span className="ml-3 block text-gray-700 text-sm">Dialer</span>
               </label>
               <label htmlFor="CommunicationTools" className="inline-flex items-center cursor-pointer">
                 <input
@@ -103,27 +103,27 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
                 />
                 <span className="ml-3 block text-gray-700 text-sm">Communication Tools</span>
               </label>
-              <label htmlFor="SalesIntelligence" className="inline-flex items-center cursor-pointer">
+              <label htmlFor="ContactDatabase" className="inline-flex items-center cursor-pointer">
                 <input
-                  id="SalesIntelligence"
+                  id="ContactDatabase"
                   type="checkbox"
                   className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
                   style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
-                  checked={selectedCategories.SalesIntelligence}
+                  checked={selectedCategories.ContactDatabase}
                   onChange={handleCheckboxChange}
                 />
-                <span className="ml-3 block text-gray-700 text-sm">Sales Intelligence</span>
+                <span className="ml-3 block text-gray-700 text-sm">Contact Database</span>
               </label>
-              <label htmlFor="Dialer" className="inline-flex items-center cursor-pointer">
+              <label htmlFor="EngagementPlatform" className="inline-flex items-center cursor-pointer">
                 <input
-                  id="Dialer"
+                  id="EngagementPlatform"
                   type="checkbox"
                   className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
                   style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
-                  checked={selectedCategories.Dialer}
+                  checked={selectedCategories.EngagementPlatform}
                   onChange={handleCheckboxChange}
                 />
-                <span className="ml-3 block text-gray-700 text-sm">Dialer</span>
+                <span className="ml-3 block text-gray-700 text-sm">Engagement Platform</span>
               </label>
               <label htmlFor="Prospecting" className="inline-flex items-center cursor-pointer">
                 <input
@@ -135,6 +135,99 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
                   onChange={handleCheckboxChange}
                 />
                 <span className="ml-3 block text-gray-700 text-sm">Prospecting</span>
+              </label>
+            </div>
+          </details>
+          <details open>
+            <summary className="text-base font-medium text-gray-700 cursor-pointer pb-4">Advanced Tools</summary>
+            <div className="flex flex-col space-y-2 ml-4">
+              <label htmlFor="EnablementPlatforms" className="inline-flex items-center cursor-pointer">
+                <input
+                  id="EnablementPlatforms"
+                  type="checkbox"
+                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
+                  checked={selectedCategories.EnablementPlatforms}
+                  onChange={handleCheckboxChange}
+                />
+                <span className="ml-3 block text-gray-700 text-sm">Sales Enablement Platforms</span>
+              </label>
+              <label htmlFor="SalesPerformanceManagement" className="inline-flex items-center cursor-pointer">
+                <input
+                  id="SalesPerformanceManagement"
+                  type="checkbox"
+                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
+                  checked={selectedCategories.SalesPerformanceManagement}
+                  onChange={handleCheckboxChange}
+                />
+                <span className="ml-3 block text-gray-700 text-sm">Sales Performance Management</span>
+              </label>
+              <label htmlFor="SalesTrainingAndCoaching" className="inline-flex items-center cursor-pointer">
+                <input
+                  id="SalesTrainingAndCoaching"
+                  type="checkbox"
+                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
+                  checked={selectedCategories.SalesTrainingAndCoaching}
+                  onChange={handleCheckboxChange}
+                />
+                <span className="ml-3 block text-gray-700 text-sm">Sales Training and Coaching</span>
+              </label>
+              <label htmlFor="AccountBasedMarketing" className="inline-flex items-center cursor-pointer">
+                <input
+                  id="AccountBasedMarketing"
+                  type="checkbox"
+                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
+                  checked={selectedCategories.AccountBasedMarketing}
+                  onChange={handleCheckboxChange}
+                />
+                <span className="ml-3 block text-gray-700 text-sm">Account-Based Marketing</span>
+              </label>
+              <label htmlFor="Forecasting" className="inline-flex items-center cursor-pointer">
+                <input
+                  id="Forecasting"
+                  type="checkbox"
+                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
+                  checked={selectedCategories.Forecasting}
+                  onChange={handleCheckboxChange}
+                />
+                <span className="ml-3 block text-gray-700 text-sm">Forecasting</span>
+              </label>
+              <label htmlFor="SalesAutomation" className="inline-flex items-center cursor-pointer">
+                <input
+                  id="SalesAutomation"
+                  type="checkbox"
+                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
+                  checked={selectedCategories.SalesAutomation}
+                  onChange={handleCheckboxChange}
+                />
+                <span className="ml-3 block text-gray-700 text-sm">Sales Automation</span>
+              </label>
+              <label htmlFor="SalesAnalyticsAndReporting" className="inline-flex items-center cursor-pointer">
+                <input
+                  id="SalesAnalyticsAndReporting"
+                  type="checkbox"
+                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
+                  checked={selectedCategories.SalesAnalyticsAndReporting}
+                  onChange={handleCheckboxChange}
+                />
+                <span className="ml-3 block text-gray-700 text-sm">Sales Analytics and Reporting</span>
+              </label>
+              <label htmlFor="VoiceandVideoTools" className="inline-flex items-center cursor-pointer">
+                <input
+                  id="VoiceandVideoTools"
+                  type="checkbox"
+                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
+                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
+                  checked={selectedCategories.VoiceandVideoTools}
+                  onChange={handleCheckboxChange}
+                />
+                <span className="ml-3 block text-gray-700 text-sm">Video and Voice Tools</span>
               </label>
               <label htmlFor="ESignatureTools" className="inline-flex items-center cursor-pointer">
                 <input
@@ -149,111 +242,7 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
               </label>
             </div>
           </details>
-          <details>
-            <summary className="text-base font-medium text-gray-700 cursor-pointer">Advanced Tools</summary>
-            <div className="flex flex-col space-y-2 ml-4">
-              <label htmlFor="SalesAnalyticsAndReporting" className="inline-flex items-center cursor-pointer">
-                <input
-                  id="SalesAnalyticsAndReporting"
-                  type="checkbox"
-                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
-                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
-                  checked={selectedCategories.SalesAnalyticsAndReporting}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="ml-3 block text-gray-700 text-sm">Sales Analytics and Reporting</span>
-              </label>
-              <label htmlFor="SalesEngagementPlatform" className="inline-flex items-center cursor-pointer">
-                <input
-                  id="SalesEngagementPlatform"
-                  type="checkbox"
-                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
-                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
-                  checked={selectedCategories.SalesEngagementPlatform}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="ml-3 block text-gray-700 text-sm">Engagement Platform</span>
-              </label>
-              <label htmlFor="EnablementPlatforms" className="inline-flex items-center cursor-pointer">
-                <input
-                  id="EnablementPlatforms"
-                  type="checkbox"
-                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
-                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
-                  checked={selectedCategories.EnablementPlatforms}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="ml-3 block text-gray-700 text-sm">Enablement Platforms</span>
-              </label>
-              <label htmlFor="SalesTrainingAndCoaching" className="inline-flex items-center cursor-pointer">
-                <input
-                  id="SalesTrainingAndCoaching"
-                  type="checkbox"
-                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
-                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
-                  checked={selectedCategories.SalesTrainingAndCoaching}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="ml-3 block text-gray-700 text-sm">Sales Training and Coaching</span>
-              </label>
-              <label htmlFor="VoiceAndVideoTools" className="inline-flex items-center cursor-pointer">
-                <input
-                  id="VoiceAndVideoTools"
-                  type="checkbox"
-                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
-                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
-                  checked={selectedCategories.VoiceAndVideoTools}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="ml-3 block text-gray-700 text-sm">Voice and Video Tools</span>
-              </label>
-              <label htmlFor="Forecasting" className="inline-flex items-center cursor-pointer">
-                <input
-                  id="Forecasting"
-                  type="checkbox"
-                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
-                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
-                  checked={selectedCategories.Forecasting}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="ml-3 block text-gray-700 text-sm">Forecasting</span>
-              </label>
-              <label htmlFor="ProposalManagement" className="inline-flex items-center cursor-pointer">
-                <input
-                  id="ProposalManagement"
-                  type="checkbox"
-                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
-                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
-                  checked={selectedCategories.ProposalManagement}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="ml-3 block text-gray-700 text-sm">Proposal Management</span>
-              </label>
-              <label htmlFor="AccountBasedMarketing" className="inline-flex items-center cursor-pointer">
-                <input
-                  id="AccountBasedMarketing"
-                  type="checkbox"
-                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
-                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
-                  checked={selectedCategories.AccountBasedMarketing}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="ml-3 block text-gray-700 text-sm">Account-Based Marketing</span>
-              </label>
-              <label htmlFor="SocialSelling" className="inline-flex items-center cursor-pointer">
-                <input
-                  id="SocialSelling"
-                  type="checkbox"
-                  className="form-checkbox h-[15px] w-[15px] text-gray-600 transition duration-150 ease-in-out"
-                  style={{ borderRadius: '3.5px', borderColor: '#9CA3AF'}}
-                  checked={selectedCategories.SocialSelling}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="ml-3 block text-gray-700 text-sm">Social Selling</span>
-              </label>
-            </div>
-          </details>
-          <details>
+          {/* <details>
             <summary className="text-base font-medium text-gray-700 cursor-pointer">Specialized Tools</summary>
             <div className="flex flex-col space-y-2 ml-4">
               <label htmlFor="ConfigurePriceQuote" className="inline-flex items-center cursor-pointer">
@@ -356,7 +345,7 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
                 <span className="ml-3 block text-gray-700 text-sm">Sales Attribution</span>
               </label>
             </div>
-          </details>
+          </details> */}
         </div>
         <label htmlFor="category" className="text-base font-medium text-gray-700" style={{ marginTop: '30px', fontSize: '14px' }}>Marketing Tech - Coming soon</label>
       </div>
