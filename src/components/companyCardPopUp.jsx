@@ -56,7 +56,7 @@ const Popup = ({ isOpen, onClose, websiteUrl, vendorData }) => { // Added vendor
 
     return (
         <div className="fixed inset-0 z-50" style={{width: '100%', height: '100%', padding: 40, background: 'rgba(0, 0, 0, 0.15)', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-end', gap: 10, display: 'inline-flex'}} onClick={handleBackgroundClick}>
-            <div style={{width: window.innerWidth < 950 ? '100%' : 470, flex: '1 1 0', paddingTop: 12, paddingBottom: 30, paddingLeft: 30, paddingRight: 30, background: 'white', borderRadius: 22.53, overflow: 'hidden', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 20, display: 'flex'}}>
+            <div style={{width: window.innerWidth < 950 ? '100%' : 470, flex: '1 1 0', paddingTop: 12, paddingBottom: 30, paddingLeft: 30, paddingRight: 30, background: 'white', borderRadius: 22.53, overflowY: 'auto', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 20, display: 'flex'}}>
                 <div style={{alignSelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', display: 'inline-flex'}}>
                     <img style={{width: 18.33, height: 18.33}} src="/mdi_web.svg" alt="Placeholder Image" />
                     <div style={{width: 151, height: 35, textAlign: 'center', color: '#ACACAC', fontSize: 16, fontFamily: 'Open Sans', fontWeight: '500', lineHeight: '35px', wordWrap: 'break-word'}}>Company View</div>
