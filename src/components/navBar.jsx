@@ -7,29 +7,40 @@
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { useEffect, useState } from 'react';
 
 export default function NavBar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && localStorage.getItem('token')) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.reload();
+  };
+
   return (
     <header style={{width: '100%', height: '100%', paddingLeft: 35, paddingRight: 35, paddingTop: 5, background: 'white', justifyContent: 'space-between', alignItems: 'center', display: 'inline-flex'}}>
         <div style={{justifyContent: 'flex-start', alignItems: 'center', gap: 20, display: 'flex'}}>
             <img style={{width: 167.13, position: 'relative'}} src="/logo-green.png" />
         </div>
-        <div style={{paddingLeft: 16, paddingRight: 16, paddingTop: 15, paddingBottom: 15, background: 'white', justifyContent: 'center', alignItems: 'center', gap: 35, display: 'flex'}}>
+        {/* <div style={{paddingLeft: 16, paddingRight: 16, paddingTop: 15, paddingBottom: 15, background: 'white', justifyContent: 'center', alignItems: 'center', gap: 35, display: 'flex'}}>
             <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word'}}>Launches</div>
             <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word'}}>Categories</div>
             <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word'}}>Community</div>
             <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word'}}>About Us</div>
-        </div>
-        {typeof window !== 'undefined' && localStorage.getItem('token') ? (
-            <button onClick={() => {
-                localStorage.removeItem('token');
-                window.location.reload();
-            }} style={{ height: '100%', paddingLeft: 13, paddingRight: 13, paddingTop: 3, paddingBottom: 3, borderRadius: 5, overflow: 'hidden', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex', background: 'none', border: 'none', cursor: 'pointer'}}>
-                <div style={{width: 24, height: 24, position: 'relative'}}>
-                    <img style={{width: 19.45, height: 20, left: 2.27, top: 2, position: 'absolute'}} src="/material-symbols_logout.svg" alt="Logout Icon" />
-                </div>
-                <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>Logout</div>
-            </button>
+        </div> */}
+        {isLoggedIn ? (
+            <div style={{ height: '100%', paddingLeft: 13, paddingRight: 13, paddingTop: 3, paddingBottom: 3, borderRadius: 5, overflow: 'hidden', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex', background: 'none', border: 'none', cursor: 'pointer'}}>
+                <button onClick={handleLogout} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+                    <img style={{width: 19.45, height: 20, marginRight: 8}} src="/material-symbols_logout.svg" alt="Logout Icon" />
+                    <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>Logout</div>
+                </button>
+            </div>
         ) : (
             <div style={{justifyContent: 'flex-start', alignItems: 'flex-end', gap: 8, display: 'flex'}}>
                 <button onClick={() => window.location.href = '/signup'} style={{paddingLeft: 20, paddingRight: 20, paddingTop: 9, paddingBottom: 9, background: 'rgba(1, 127, 64, 0.10)', borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', gap: 20, display: 'flex'}}>

@@ -29,12 +29,12 @@ const Popup = ({ isOpen, onClose, websiteUrl, vendorData }) => { // Added vendor
         <div className="fixed inset-0 z-50" style={{width: '100%', height: '100%', padding: 40, background: 'rgba(0, 0, 0, 0.15)', display: 'flex', justifyContent: 'center', alignItems: 'center'}} onClick={handleBackgroundClick}>
             <div style={{width: 600, height: 'auto', padding: 30, background: 'white', borderRadius: 22.53, overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 20}}>
                 <div style={{alignSelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', display: 'flex'}}>
-                    <img style={{width: 18.33, height: 18.33}} src="/icon8-website-100.png" alt="Placeholder Image" />
+                    <div style={{width: 18.33, height: 18.33, backgroundColor: 'white'}}></div>
                     <div style={{height: 35, textAlign: 'center', color: '#ACACAC', fontSize: 16, fontFamily: 'Open Sans', fontWeight: '500', lineHeight: '35px', wordWrap: 'break-word'}}>Looking at a problem space?</div>
-                    <img onClick={handleBackgroundClick} style={{width: 17, height: 17, cursor: 'pointer'}} src="/icon8-close2.png"/>
+                    <img onClick={handleBackgroundClick} style={{width: 17, height: 17, cursor: 'pointer'}} src="/closeicon.png"/>
                 </div>
                 {/* Add the embed in your HTML */}
-                <iframe data-tally-src="https://tally.so/embed/mOYllk?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="462" frameBorder="0" marginHeight="0" marginWidth="0" title="We'll contact the vendor for you."></iframe>
+                <iframe data-tally-src="https://tally.so/embed/31v9Qp?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="484" frameborder="0" marginheight="0" marginwidth="0" title="Vendor Research List"></iframe>
                 <Script
                     id="tally-js"
                     src="https://tally.so/widgets/embed.js"

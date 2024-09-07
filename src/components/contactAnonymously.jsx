@@ -29,9 +29,9 @@ const Popup = ({ isOpen, onClose, websiteUrl, vendorData }) => { // Added vendor
         <div className="fixed inset-0 z-50" style={{width: '100%', height: '100%', padding: 40, background: 'rgba(0, 0, 0, 0.15)', display: 'flex', justifyContent: 'center', alignItems: 'center'}} onClick={handleBackgroundClick}>
             <div style={{width: 600, height: 'auto', padding: 30, background: 'white', borderRadius: 22.53, overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 20}}>
                 <div style={{alignSelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', display: 'flex'}}>
-                    <img style={{width: 18.33, height: 18.33}} src="/icon8-website-100.png" alt="Placeholder Image" />
+                    <div style={{width: 18.33, height: 18.33, backgroundColor: 'white'}}></div>
                     <div style={{height: 35, textAlign: 'center', color: '#ACACAC', fontSize: 16, fontFamily: 'Open Sans', fontWeight: '500', lineHeight: '35px', wordWrap: 'break-word'}}>Don't want to talk to <span>{vendorData.name}?</span></div>
-                    <img onClick={handleBackgroundClick} style={{width: 17, height: 17, cursor: 'pointer'}} src="/icon8-close2.png"/>
+                    <img onClick={handleBackgroundClick} style={{width: 17, height: 17, cursor: 'pointer'}} src="/closeicon.png"/>
                 </div>
                 <div style={{width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
                     <div style={{width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>

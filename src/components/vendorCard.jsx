@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import CompanyPopup from './companyCardPopUp'; // Import the CompanyPopup component
 import ContactPopup from './contactAnonymously'; // Import the ContactPopup component
+import mixpanel from 'mixpanel-browser'; // Import mixpanel
 
-const VendorCard = ({ name, primary_category, description, logo_url, created_at, website_url, secondary_categories, founded, country, best_for_personas, best_for_industries, best_for_company_size }) => { 
+const VendorCard = ({ name, primary_category, description, logo_url, created_at, website_url, secondary_categories, founded, country, best_for_personas, best_for_industries, best_for_company_size, userName }) => { 
     const [isCompanyPopupOpen, setIsCompanyPopupOpen] = useState(false); // State to manage company popup visibility
     const [isContactPopupOpen, setIsContactPopupOpen] = useState(false); // State to manage contact popup visibility
 
@@ -78,13 +79,13 @@ const VendorCard = ({ name, primary_category, description, logo_url, created_at,
         </div>
         <div style={{ color: '#9CA3AF', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', lineHeight: '16.80px', wordWrap: 'break-word', width: '85%' }}>{description}</div>
         <div className="flex justify-between items-center w-full">
-            <div className="justify-center items-center flex">
+            <div className="flex flex-wrap justify-start items-center">
                 {separatedSecondaryCategories.map((category, index) => {
                     const colors = ['#008000', '#FF0000', '#FFA500', '#0000FF', '#800080', '#A52A2A']; // Green, Red, Orange, Blue, Purple, Brown
                     const color = colors[index % colors.length];
                     const bgColor = `${color}22`; // Adding 22 to the hex color to make it lighter
                     return (
-                        <span key={index} className="px-[19px] pt-1.5 pb-[5px] rounded-md justify-center items-center flex" style={{ backgroundColor: bgColor, color: color, fontSize: '12px', fontFamily: 'Open Sans', fontWeight: '400', lineHeight: '16.40px', whiteSpace: 'nowrap', marginRight: '5px' }}>
+                        <span key={index} className="px-[19px] pt-1.5 pb-[5px] rounded-md justify-center items-center flex" style={{ backgroundColor: bgColor, color: color, fontSize: '12px', fontFamily: 'Open Sans', fontWeight: '400', lineHeight: '16.40px', whiteSpace: 'nowrap', marginRight: '5px', marginBottom: '5px' }}>
                             {category}
                         </span>
                     );

@@ -58,7 +58,7 @@ function Filter({ setSelectedFilters }) { // Accept setSelectedFilters as a prop
   }, [selectedCategories, setSelectedFilters]);
 
   return (
-    <div className="flex flex-col space-y-4" style={{ fontFamily: 'Open Sans, sans-serif', maxHeight: '100%', overflowY: 'auto' }}>
+    <div className="flex flex-col space-y-4" style={{ fontFamily: 'Open Sans, sans-serif', maxHeight: '100%', overflowY: 'auto', margin: '48px' }}>
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-medium text-gray-700">Filter</h2>
         <button style={{ color: 'red', fontSize: 'smaller' }} onClick={handleClearFilter}>Clear filter</button>
