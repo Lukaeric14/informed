@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase'; // Import Supabase client
 import { useRouter } from 'next/router'; // Import useRouter from next/router
 
@@ -12,7 +12,19 @@ const SignUp = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [step, setStep] = useState(1); // Set step to 1 by default
+  const [isMobile, setIsMobile] = useState(false); // State to track mobile view
   const router = useRouter(); // Initialize useRouter
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 950); // Update state based on window width
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Call once to set initial state
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
@@ -168,7 +180,9 @@ const SignUp = () => {
                 <div style={{flex: '1 1 0', padding: 10}} />
                 <div style={{width: 406, height: 18, textAlign: 'center', color: '#7D7C78', fontSize: 11, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>By signing up, you agree to our Terms of Services & Privacy Policy</div>
             </div>
-            <img style={{width: 426, height: 656, borderRadius: 25, border: '1px #017F40 solid'}} src="/frame60887.png" />
+            {!isMobile && ( // Conditionally render the container based on screen size
+              <img style={{width: 426, height: 656, borderRadius: 25, border: '1px #017F40 solid'}} src="/frame60887.png" />
+            )}
         </div>
     </div>
 )};
