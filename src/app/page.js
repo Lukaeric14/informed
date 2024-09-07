@@ -31,19 +31,16 @@ export default function Home() {
   const [isStacked, setIsStacked] = useState(false); // State to manage stacking of components
   const [isFilterSticky, setIsFilterSticky] = useState(true); // State to manage filter sticky constraint
   const [isFilterVisible, setIsFilterVisible] = useState(false); // Set filter visibility to false by default
-  const [isLoading, setIsLoading] = useState(true); // State to manage loading status
 
   useEffect(() => {
     const fetchUserData = async () => {
       const { data: { user }, error: authError } = await supabase.auth.getUser();
       if (authError) {
         console.error('Error fetching user:', authError);
-        setIsLoading(false);
         return; // Exit if there's an authentication error
       }
       if (!user) {
         console.error('No user found');
-        setIsLoading(false);
         return; // Exit if no user is authenticated
       }
       
@@ -54,17 +51,17 @@ export default function Home() {
         .single();
       if (userError) {
         console.error('Error fetching user details:', userError);
-        setIsLoading(false);
       } else {
         setUserName(data.full_name);
         setUserEmail(data.email);
         mixpanel.identify(data.email);
+        // console.log(`Mixpanel identify called with userEmail: ${data.email}`);
 
         mixpanel.people.set({
           '$name': data.full_name,
           '$email': data.email,
         });
-        setIsLoading(false);
+        // console.log(`Mixpanel people.set called with userName: ${data.full_name} and userEmail: ${data.email}`);
       }
     };
 
@@ -114,10 +111,6 @@ export default function Home() {
     return matchesFilters && matchesSearch;
   });
 
-  if (isLoading) {
-    return <div>Loading...</div>; // Show loading state until everything is loaded
-  }
-
   return (
     <main className="h-screen w-full bg-[#F3F3F3] overflow-y-auto"> 
       <div className="flex flex-col h-full">
@@ -137,7 +130,7 @@ export default function Home() {
                 </Suspense>
               )}
             </div>
-            <div className={`w-1/2 mx-15 ${isStacked ? 'w-full mt-10' : ''}`} style={{ marginLeft: '30px', marginRight: '30px', flexGrow: 2 }}> {/* Center Column with 30px margins */}
+            <div className={`w-1/2 ${isStacked ? 'w-full mt-10' : 'mx-15'}`} style={{ marginLeft: isStacked ? '0' : '30px', marginRight: isStacked ? '0' : '30px', flexGrow: 2 }}> {/* Center Column with adjustable margins */}
               <Suspense>
                 <HeroSection setSearchedVendor={setSearchedVendor} /> {/* Pass setSearchedVendor to HeroSection */}
               </Suspense>

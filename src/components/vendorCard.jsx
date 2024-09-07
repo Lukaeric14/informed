@@ -91,8 +91,8 @@ const VendorCard = ({ name, primary_category, description, logo_url, created_at,
                     );
                 })}
             </div>
-            <div style={{ color: '#9CA3AF', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '400', lineHeight: '16.80px', whiteSpace: 'nowrap' }}>Last updated {new Date(created_at).toDateString()}</div>
-        </div>
+            <div style={{ color: '#9CA3AF', fontSize: 12, fontFamily: 'Open Sans', fontWeight: '400', lineHeight: '16.80px', whiteSpace: 'normal' }}>Last updated {new Date(created_at).toDateString()}</div>
+            </div>
         <CompanyPopup 
             isOpen={isCompanyPopupOpen} 
             onClose={handleCloseCompanyPopup} 

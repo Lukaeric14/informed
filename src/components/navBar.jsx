@@ -11,11 +11,19 @@ import { useEffect, useState } from 'react';
 
 export default function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && localStorage.getItem('token')) {
       setIsLoggedIn(true);
     }
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleLogout = () => {
@@ -23,9 +31,29 @@ export default function NavBar() {
     window.location.reload();
   };
 
+  const headerStyle = {
+    width: '100%',
+    height: '100%',
+    paddingLeft: 35,
+    paddingRight: 35,
+    paddingTop: 5,
+    background: 'white',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    display: 'inline-flex',
+  };
+
+  const firstDivStyle = {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    gap: 5,
+    display: 'flex',
+    height: windowWidth < 950 ? '120px' : 'auto', // Increase height if screen width is less than 950px
+  };
+
   return (
-    <header style={{width: '100%', height: '100%', paddingLeft: 35, paddingRight: 35, paddingTop: 5, background: 'white', justifyContent: 'space-between', alignItems: 'center', display: 'inline-flex'}}>
-        <div style={{justifyContent: 'flex-start', alignItems: 'center', gap: 20, display: 'flex'}}>
+    <header style={headerStyle}>
+        <div style={firstDivStyle}>
             <img style={{width: 167.13, position: 'relative'}} src="/logo-green.png" />
         </div>
         {/* <div style={{paddingLeft: 16, paddingRight: 16, paddingTop: 15, paddingBottom: 15, background: 'white', justifyContent: 'center', alignItems: 'center', gap: 35, display: 'flex'}}>
@@ -43,10 +71,10 @@ export default function NavBar() {
             </div>
         ) : (
             <div style={{justifyContent: 'flex-start', alignItems: 'flex-end', gap: 8, display: 'flex'}}>
-                <button onClick={() => window.location.href = '/signup'} style={{paddingLeft: 20, paddingRight: 20, paddingTop: 9, paddingBottom: 9, background: 'rgba(1, 127, 64, 0.10)', borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', gap: 20, display: 'flex'}}>
+                <button onClick={() => window.location.href = '/signup'} style={{paddingLeft: 20, paddingRight: 20, paddingTop: windowWidth < 950 ? 12 : 9, paddingBottom: windowWidth < 950 ? 12 : 9, background: 'rgba(1, 127, 64, 0.10)', borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', gap: 20, display: 'flex'}}>
                     <div style={{color: '#017F40', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '500', height: 17, wordWrap: 'break-word', lineHeight: '17px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Create an account</div>
                 </button>
-                <button onClick={() => window.location.href = '/signin'} style={{paddingTop: 9, paddingBottom: 10, paddingLeft: 19, paddingRight: 20, background: '#017F40', borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
+                <button onClick={() => window.location.href = '/signin'} style={{paddingTop: windowWidth < 950 ? 12 : 9, paddingBottom: windowWidth < 950 ? 12 : 10, paddingLeft: 19, paddingRight: 20, background: '#017F40', borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
                     <div style={{color: 'white', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word', lineHeight: '17px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Sign in</div>
                 </button>
             </div>
