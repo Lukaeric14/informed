@@ -33,9 +33,9 @@ export default function NavBar() {
 
   const headerStyle = {
     width: '100%',
-    height: '100%',
-    paddingLeft: 35,
-    paddingRight: 35,
+    height: '60px', // Reduced height for a shorter navbar
+    paddingLeft: 40, // Increased padding for more space
+    paddingRight: 40, // Increased padding for more space
     paddingTop: 5,
     background: 'white',
     justifyContent: 'space-between',
@@ -48,22 +48,16 @@ export default function NavBar() {
     alignItems: 'center',
     gap: 5,
     display: 'flex',
-    height: windowWidth < 950 ? '120px' : 'auto', // Increase height if screen width is less than 950px
+    height: '100%', // Set to 100% to fit the new header height
   };
 
   return (
     <header style={headerStyle}>
         <div style={firstDivStyle}>
-            <img style={{width: 167.13, position: 'relative'}} src="/logo-green.png" />
+            <img style={{width: 150, position: 'relative'}} src="/logo-green.png" /> {/* Adjusted logo width */}
         </div>
-        {/* <div style={{paddingLeft: 16, paddingRight: 16, paddingTop: 15, paddingBottom: 15, background: 'white', justifyContent: 'center', alignItems: 'center', gap: 35, display: 'flex'}}>
-            <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word'}}>Launches</div>
-            <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word'}}>Categories</div>
-            <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word'}}>Community</div>
-            <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word'}}>About Us</div>
-        </div> */}
         {isLoggedIn ? (
-            <div style={{ height: '100%', paddingLeft: 13, paddingRight: 13, paddingTop: 3, paddingBottom: 3, borderRadius: 5, overflow: 'hidden', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex', background: 'none', border: 'none', cursor: 'pointer'}}>
+            <div style={{ height: '100%', paddingLeft: 10, paddingRight: 10, paddingTop: 3, paddingBottom: 3, borderRadius: 5, overflow: 'hidden', justifyContent: 'flex-start', alignItems: 'center', gap: 8, display: 'inline-flex', background: 'none', border: 'none', cursor: 'pointer'}}>
                 <button onClick={handleLogout} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                     <img style={{width: 19.45, height: 20, marginRight: 8}} src="/material-symbols_logout.svg" alt="Logout Icon" />
                     <div style={{color: '#4C587C', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', wordWrap: 'break-word'}}>Logout</div>
@@ -71,10 +65,10 @@ export default function NavBar() {
             </div>
         ) : (
             <div style={{justifyContent: 'flex-start', alignItems: 'flex-end', gap: 8, display: 'flex'}}>
-                <button onClick={() => window.location.href = '/signup'} style={{paddingLeft: 20, paddingRight: 20, paddingTop: windowWidth < 950 ? 12 : 9, paddingBottom: windowWidth < 950 ? 12 : 9, background: 'rgba(1, 127, 64, 0.10)', borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', gap: 20, display: 'flex'}}>
+                <button onClick={() => window.location.href = '/signup'} style={{paddingLeft: 15, paddingRight: 15, paddingTop: 6, paddingBottom: 6, background: 'rgba(1, 127, 64, 0.10)', borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', gap: 20, display: 'flex'}}>
                     <div style={{color: '#017F40', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '500', height: 17, wordWrap: 'break-word', lineHeight: '17px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Create an account</div>
                 </button>
-                <button onClick={() => window.location.href = '/signin'} style={{paddingTop: windowWidth < 950 ? 12 : 9, paddingBottom: windowWidth < 950 ? 12 : 10, paddingLeft: 19, paddingRight: 20, background: '#017F40', borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
+                <button onClick={() => window.location.href = '/signin'} style={{paddingTop: 6, paddingBottom: 6, paddingLeft: 15, paddingRight: 15, background: '#017F40', borderRadius: 5, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
                     <div style={{color: 'white', fontSize: 14, fontFamily: 'Open Sans', fontWeight: '400', height: 17, wordWrap: 'break-word', lineHeight: '17px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Sign in</div>
                 </button>
             </div>

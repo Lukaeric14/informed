@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from '@/components/navBar'; // Corrected import path
 import Head from 'next/head';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,36 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Navbar />
         {children}
+        <Script id="reb2b-script" strategy="afterInteractive">
+          {`!function () {
+            var reb2b = window.reb2b = window.reb2b || [];
+            if (reb2b.invoked) return;
+            reb2b.invoked = true;
+            reb2b.methods = ["identify", "collect"];
+            reb2b.factory = function (method) {
+              return function () {
+                var args = Array.prototype.slice.call(arguments);
+                args.unshift(method);
+                reb2b.push(args);
+                return reb2b;
+              };
+            };
+            for (var i = 0; i < reb2b.methods.length; i++) {
+              var key = reb2b.methods[i];
+              reb2b[key] = reb2b.factory(key);
+            }
+            reb2b.load = function (key) {
+              var script = document.createElement("script");
+              script.type = "text/javascript";
+              script.async = true;
+              script.src = "https://s3-us-west-2.amazonaws.com/b2bjsstore/b/" + key + "/reb2b.js.gz";
+              var first = document.getElementsByTagName("script")[0];
+              first.parentNode.insertBefore(script, first);
+            };
+            reb2b.SNIPPET_VERSION = "1.0.1";
+            reb2b.load("0NW1GH75K5O4");
+          }();`}
+        </Script>
       </body>
     </html>
   );
